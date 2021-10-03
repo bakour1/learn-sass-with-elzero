@@ -1,0 +1,46 @@
+// prefixer
+@mixin prefixer($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+
+  #{$property} : $value;
+}
+
+
+// animation prefix
+@mixin keyFrame($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+// learn 
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+
+}
+
+
+/*
+  @mixin minMedium  {
+    @media (min-width: 992px) {
+      @content;
+    }
+  }
+
+//  ==> @include minMedium {
+  color : red;
+  bg-c: blue
+}*/
